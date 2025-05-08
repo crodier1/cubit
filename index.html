@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CubeIt</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .container {
+      text-align: center;
+    }
+    input[type="number"] {
+      padding: 0.5em;
+      font-size: 1em;
+      width: 200px;
+    }
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      margin-left: 0.5em;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 1em;
+      font-size: 1.1em;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="container">
+    <input
+      type="number"
+      id="numberInput"
+      placeholder="enter number…"
+    />
+    <button id="cubeButton">Cube</button>
+    <p id="result">Your result will appear here…</p>
+  </div>
+
+  <script>
+    const input = document.getElementById('numberInput');
+    const btn   = document.getElementById('cubeButton');
+    const out   = document.getElementById('result');
+
+    function showCube() {
+      const val = input.value.trim();
+      if (val === '') {
+        out.textContent = 'Put in something';
+      } else {
+        const n = Number(val);
+        // type="number" should prevent non-numbers, but just in case:
+        if (isNaN(n)) {
+          out.textContent = 'Please enter a valid number';
+        } else {
+          out.textContent = `${n}^3 = ${n * n * n}`;
+        }
+      }
+      input.value = '';
+      input.focus();
+    }
+
+    btn.addEventListener('click', showCube);
+
+    // allow Enter key to work as well
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        showCube();
+      }
+    });
+  </script>
 </body>
 </html>
