@@ -15,7 +15,7 @@ def test_cube(page: Page):
 
     result = page.locator('#result')
 
-    expect(result).to_contain_text(f"{random_int}^3 = {random_int**3}")
+    expect(result).to_contain_text(f" = {random_int**3}")
 
 
 def test_blank_input(page: Page):

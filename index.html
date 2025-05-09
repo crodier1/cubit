@@ -60,7 +60,7 @@
         if (isNaN(n)) {
           out.textContent = 'Please enter a valid number';
         } else {
-          out.textContent = `${n}^3 = ${n * n * n}`;
+          out.innerHTML = `${n}<sup>3</sup> = ${Math.pow(n, 3)}`;
         }
       }
       input.value = '';
