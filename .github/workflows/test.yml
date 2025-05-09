@@ -35,7 +35,5 @@ jobs:
       - name: Run tests
         # run the server in the background and then invoke pytest
         run: |
-          cd cubit
           python -m http.server 8000 &
-          cd ..
           pytest -v
